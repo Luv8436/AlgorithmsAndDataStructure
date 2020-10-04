@@ -1,10 +1,8 @@
 class BubbleSort:
     """ BubbleSort Algorithm Implementation in Python 3.0+
-
         arr : Unorded list
         output : Return list in ascending order.
         time complexity : O(n2)
-
         Example :
         >>> sort = BubbleSort()
         >>> sort([4, 2, 6, 5, 9, 8])
@@ -15,13 +13,20 @@ class BubbleSort:
         print("Bubble Sort Algorithm is Initialized")
 
     def __call__(self, arr):
-        n = len(arr)
-        for i in range(n):
-            already_sorted = True
-            for j in range(n - i - 1):
-                if arr[j] > arr[j + 1]:
-                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        len_arr = len(arr)
+
+		# Iterate over each element of arr and compare it to adjacent element.
+		# For each loop one element of the arr is sorted.
+        for outer in range(len_arr):
+            already_sorted = True # Let arr is sorted.
+			
+			# Iterate over each element in the unsorted arr.
+            for inner in range(len_arr - outer - 1): # compare the adjacent elements in arr.
+                if arr[inner] > arr[inner + 1]: # if adjacent elements are not sorted then 
+					# swap those elements and make already_sorted to be false.
+                    arr[inner], arr[inner + 1] = arr[inner + 1], arr[inner]
                     already_sorted = False
+			# if any swap does not happen , means the arr is sorted and break out of outer loop
             if already_sorted:
                 break
         return arr
